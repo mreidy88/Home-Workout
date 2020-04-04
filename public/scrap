@@ -1,0 +1,30 @@
+    componentDidMount = async () => {
+      const apiKey = "33366c925297d66a5cfe90a003faa973f52d872e";
+      const baseURL = "https://wger.de/api/v2/equipment/";
+      const exercises = this.props.match.params.exercises;
+      axios
+      .get(`${baseURL}${apiKey}${exercises}`)
+      .then(response => {
+      let exerciseObject = response.data;
+      this.setState({
+        exerciseList: exerciseObject
+      });
+    })
+      .catch (error => {
+        console.log(error);
+      });
+    };
+
+        const initialFormState = { key: '', name: '', weight: '', reps: '', comments: '', day: '' }
+    const [exercise, setExercise] = initialFormState;
+  
+    function handleChange(e) {
+      setExercise({ ...exercise, [e.target.name]: e.target.value });
+    }
+  
+    function handleSubmit(e) {
+      e.preventDefault();
+      alert(`${exercise.name} was sucessfully added.`);
+      props.addExercise(exercise);
+      setExercise(initialFormState);
+    }
