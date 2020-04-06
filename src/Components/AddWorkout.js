@@ -13,7 +13,7 @@ class AddWorkout extends Component  {
 
   componentDidMount = async () => {
     const apiKey = "33366c925297d66a5cfe90a003faa973f52d872e";
-    const baseURL = "https://wger.de/api/v2/equipment/";
+    const baseURL = "https://wger.de/api/api/v2/exercise/?equipment=7";
     const exercises = this.props.match.params.exercises;
     axios
     .get(`${baseURL}${apiKey}${exercises}`)
